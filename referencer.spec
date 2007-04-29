@@ -47,7 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT/%_datadir/mime
 
 # fd.o icons
-mkdir -p %buildroot%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
+mkdir -p %buildroot%{_iconsdir}/hicolor/{scalable,48x48,32x32,16x16}/apps
 cp %buildroot%_datadir/pixmaps/%name.svg %buildroot%_iconsdir/hicolor/scalable/apps/%name.svg
 cp %SOURCE1 %buildroot%_iconsdir/hicolor/48x48/apps/%name.png
 convert -scale 32 %SOURCE1 %buildroot%_iconsdir/hicolor/32x32/apps/%name.png
