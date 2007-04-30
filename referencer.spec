@@ -1,6 +1,6 @@
 %define name referencer
 %define version 1.0.3
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Bibliography reference management tool for GNOME
 Name: %{name}
@@ -31,20 +31,13 @@ ultimately generate a BibTeX bibliography file.
 %setup -q
 
 %build
-%configure
+%configure --disable-update-mime-database
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
-
-# There's a --disable-update-mime-database option to configure which stops
-# the MIME database from being generated, but it's broken in 1.0.3. So using
-# this dirty workaround. If updating this package, please check whether
-# --disable-update-mime-database option is working, and use that instead of
-# this hack if it is.
-rm -rf $RPM_BUILD_ROOT/%_datadir/mime
 
 # fd.o icons
 mkdir -p %buildroot%{_iconsdir}/hicolor/{scalable,48x48,32x32,16x16}/apps
@@ -90,3 +83,4 @@ rm -rf $RPM_BUILD_ROOT
 %_liconsdir/*
 %_miconsdir/*
 %_datadir/pixmaps/referencer.svg
+%_datadir/mime/packages/%{name}.xml
