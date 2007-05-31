@@ -1,6 +1,6 @@
 %define name referencer
-%define version 1.0.3
-%define release %mkrel 2
+%define version 1.0.4
+%define release %mkrel 1
 
 Summary: Bibliography reference management tool for GNOME
 Name: %{name}
@@ -82,5 +82,5 @@ rm -rf $RPM_BUILD_ROOT
 %_iconsdir/*
 %_liconsdir/*
 %_miconsdir/*
-%_datadir/pixmaps/referencer.svg
+%_datadir/pixmaps/%{name}.svg
 %_datadir/mime/packages/%{name}.xml
