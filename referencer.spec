@@ -17,6 +17,7 @@ Patch0:		referencer-1.0.4-poppler.patch
 License:	GPLv2
 Group:		Graphical desktop/GNOME
 URL:		http://icculus.org/referencer/index.html
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libpopplerglib-devel
 BuildRequires:	gtkmm2.4-devel
 BuildRequires:	libgnomeuimm2.6-devel
