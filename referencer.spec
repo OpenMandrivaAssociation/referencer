@@ -17,6 +17,7 @@ BuildRequires:	libglademm2.4-devel
 BuildRequires:	gconfmm2.6-devel
 BuildRequires:	libboost-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	python-devel
 BuildRequires:	ImageMagick
 
 %description
