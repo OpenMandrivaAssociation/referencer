@@ -1,6 +1,6 @@
 Summary:	Bibliography reference management tool for GNOME
 Name:		referencer
-Version:	1.1.0
+Version:	1.1.1
 Release:	%{mkrel 1}
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
