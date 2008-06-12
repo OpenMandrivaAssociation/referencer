@@ -50,14 +50,18 @@ desktop-file-install --vendor="" \
 
 %find_lang %{name}
 
+%if %mdkversion < 200900
 %post
 %{update_icon_cache hicolor}
 %{update_menus}
 %{update_mime_database}
+%endif
+%if %mdkversion < 200900
 %postun
 %{clean_icon_cache hicolor}
 %{clean_menus}
 %{clean_mime_database}
+%endif
 
 %clean
 rm -rf %{buildroot}
