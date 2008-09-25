@@ -1,10 +1,17 @@
 Summary:	Bibliography reference management tool for GNOME
 Name:		referencer
 Version:	1.1.3
-Release:	%mkrel 3
+Release:	%mkrel 4
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
+# Fix crash when pressing enter on selected document in icon view
+# From upstream 1.1.4, via Debian:
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=500010
+Patch0:		referencer-1.1.3-fix-crash-on-enter.patch		
+# Fix bibtex export, from upstream, via Debian:
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440308
+Patch1:		referencer-1.1.3-bibtex-braces-export.patch
 License:	GPLv2
 Group:		Graphical desktop/GNOME
 URL:		http://icculus.org/referencer/index.html
@@ -26,7 +33,8 @@ ultimately generate a BibTeX bibliography file.
 
 %prep
 %setup -q
-
+%patch0 -p0 -b .fix-crash
+%patch1 -p1 -b .bibtex-export
 %build
 %configure2_5x --disable-update-mime-database
 %make
