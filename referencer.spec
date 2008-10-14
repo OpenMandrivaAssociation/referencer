@@ -19,6 +19,7 @@ BuildRequires:	libboost-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 BuildRequires:	ImageMagick
+BuildRequires:	intltool
 
 %description
 Referencer is a GNOME application to organise documents or references, and 
