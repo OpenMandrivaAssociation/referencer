@@ -18,7 +18,7 @@ BuildRequires:	gconfmm2.6-devel
 BuildRequires:	libboost-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	intltool
 
 %description
