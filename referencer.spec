@@ -1,7 +1,7 @@
 Summary:	Bibliography reference management tool for GNOME
 Name:		referencer
-Version:	1.1.5
-Release:	%mkrel 6
+Version:	1.1.6
+Release:	%mkrel 1
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
@@ -14,6 +14,7 @@ BuildRequires:	gtkmm2.4-devel
 BuildRequires:	libgnomeuimm2.6-devel
 BuildRequires:	gnome-vfsmm2.6-devel
 BuildRequires:	libglademm2.4-devel
+BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	gconfmm2.6-devel
 BuildRequires:	libboost-devel
 BuildRequires:	desktop-file-utils
@@ -47,8 +48,7 @@ convert -scale 16 %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-
-%find_lang %{name}
+%find_lang %{name} --with-gnome --all-name
 
 %if %mdkversion < 200900
 %post
@@ -77,3 +77,5 @@ rm -rf %{buildroot}
 %{_iconsdir}/hicolor/48x48/mimetypes/gnome-mime-application-x-%{name}.png
 %{_datadir}/pixmaps/%{name}.svg
 %{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/omf/*/*-C.omf
+%lang(de) %{_datadir}/omf/*/*-de.omf
