@@ -5,6 +5,7 @@ Release:	%mkrel 5
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
+Patch0:		referencer-1.1.6-poppler-0.16.0.patch
 License:	GPLv2
 Group:		Graphical desktop/GNOME
 URL:		http://icculus.org/referencer/index.html
@@ -28,8 +29,10 @@ ultimately generate a BibTeX bibliography file.
 
 %prep
 %setup -q
+%patch0 -p0 -b .poppler
 
 %build
+gnome-autogen.sh
 %configure2_5x --disable-update-mime-database
 %make
 
