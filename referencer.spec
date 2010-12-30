@@ -32,7 +32,7 @@ ultimately generate a BibTeX bibliography file.
 %patch0 -p0 -b .poppler
 
 %build
-gnome-autogen.sh
+autoreconf -fi
 %configure2_5x --disable-update-mime-database
 %make
 
