@@ -1,27 +1,27 @@
 Summary:	Bibliography reference management tool for GNOME
 Name:		referencer
 Version:	1.1.6
-Release:	%mkrel 6
+Release:	7
+License:	GPLv2
+Group:		Graphical desktop/GNOME
+URL:		http://icculus.org/referencer/index.html
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
 Patch0:		referencer-1.1.6-poppler-0.16.0.patch
-License:	GPLv2
-Group:		Graphical desktop/GNOME
-URL:		http://icculus.org/referencer/index.html
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	libpoppler-glib-devel
-BuildRequires:	gtkmm2.4-devel
-BuildRequires:	libgnomeuimm2.6-devel
-BuildRequires:	gnome-vfsmm2.6-devel
-BuildRequires:	libglademm2.4-devel
-BuildRequires:	gnome-doc-utils >= 0.3.2
-BuildRequires:	gconfmm2.6-devel
-BuildRequires:	libboost-devel
+
 BuildRequires:	desktop-file-utils
-BuildRequires:	python-devel
 BuildRequires:	imagemagick
 BuildRequires:	intltool
+BuildRequires:	boost-devel
+BuildRequires:	pkgconfig(gconfmm-2.6)
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	pkgconfig(gnome-vfsmm-2.6)
+BuildRequires:	pkgconfig(gtkmm-2.4)
+BuildRequires:	pkgconfig(libglademm-2.4)
+BuildRequires:	pkgconfig(libgnomeuimm-2.6)
+BuildRequires:	pkgconfig(poppler-glib)
+BuildRequires:	pkgconfig(python)
 
 %description
 Referencer is a GNOME application to organise documents or references, and 
@@ -33,11 +33,12 @@ ultimately generate a BibTeX bibliography file.
 
 %build
 autoreconf -fi
-%configure2_5x --disable-update-mime-database
+%configure2_5x \
+	--disable-scrollkeeper \
+	--disable-update-mime-database
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # fd.o icons
@@ -49,36 +50,20 @@ convert -scale 16 %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}
 
 # menu
 desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+	--remove-category="Application" \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/*
+
 %find_lang %{name} --with-gnome --all-name
 
-%if %mdkversion < 200900
-%post
-%{update_icon_cache hicolor}
-%{update_menus}
-%{update_mime_database}
-%endif
-%if %mdkversion < 200900
-%postun
-%{clean_icon_cache hicolor}
-%{clean_menus}
-%{clean_mime_database}
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README AUTHORS ChangeLog TODO
 %{_bindir}/%{name}
+%{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
-%{_libdir}/%{name}
-%{_iconsdir}/hicolor/*/apps/%{name}.*
-%{_iconsdir}/hicolor/48x48/mimetypes/gnome-mime-application-x-%{name}.png
 %{_datadir}/pixmaps/%{name}.svg
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/omf/*/*-C.omf
-%lang(de) %{_datadir}/omf/*/*-de.omf
+%{_iconsdir}/hicolor/*/apps/%{name}.*
+%{_iconsdir}/hicolor/48x48/mimetypes/gnome-mime-application-x-%{name}.png
+
