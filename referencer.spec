@@ -1,7 +1,7 @@
 Summary:	Bibliography reference management tool for GNOME
 Name:		referencer
 Version:	1.2.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://icculus.org/referencer/index.html
