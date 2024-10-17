@@ -4,7 +4,7 @@ Version:	1.2.1
 Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://icculus.org/referencer/index.html
+Url:		https://icculus.org/referencer/index.html
 Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
