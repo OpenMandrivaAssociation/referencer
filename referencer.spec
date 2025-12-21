@@ -9,6 +9,11 @@ Source0:	http://icculus.org/referencer/downloads/%{name}-%{version}.tar.gz
 # 48x48 PNG from referencer.svg in package, generated with GIMP
 Source1:	referencer.png
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	intltool
